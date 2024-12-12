@@ -94,12 +94,12 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 document.getElementById("startBtn").addEventListener("click", () => {
     const selectedAlgorithm = document.getElementById("algorithmSelect").value;
 
-    let array = generateArray();  // Generate a new array each time
-    renderArray(array);           // Render the initial array
+    let array = generateArray();  
+    renderArray(array);           
 
     if (selectedAlgorithm === "bubbleSort") {
-        bubbleSort(array);  // Start the Bubble Sort algorithm
+        bubbleSort(array);  
     } else if (selectedAlgorithm === "quickSort") {
-        naiveQuickSort(array, 0, array.length - 1);  // Start Naive Quick Sort
+        naiveQuickSort(array, 0, array.length - 1);  
     }
 });
