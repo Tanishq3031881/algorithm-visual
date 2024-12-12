@@ -79,7 +79,6 @@ const bubbleSort = async (array) => {
                 // Re-render the array after swapping
                 renderArray(array);
 
-                // Remove highlight after swap
                 bars[j].classList.remove("highlight");
                 bars[j + 1].classList.remove("highlight");
             }
@@ -87,7 +86,7 @@ const bubbleSort = async (array) => {
     }
 };
 
-// Sleep function to introduce delays for better visualization
+
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 // Handling the "Start" button click event
