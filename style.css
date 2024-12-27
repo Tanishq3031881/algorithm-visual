@@ -1,0 +1,43 @@
+.card-body {
+    display: flex;
+    justify-content: flex-start;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, .2);
+    background: lightgreen;
+    flex-wrap: wrap;
+}
+
+.card {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    transform: scale(.9);
+    box-shadow: 5px -5px 5px rgba(0, 0, 0, .3);
+    transition: 100ms linear;
+}
+
+.card:hover {
+    transform: scale(.9) translateY(-5px);
+    transition: 100ms linear;
+}
+
+.card-img-top-parent {
+    overflow: hidden;
+    transition: 200ms linear;
+    height: 300px;
+    position: relative;
+}
+
+.card-img-top:hover {
+    transition: 200ms linear;
+    transform: scale(1.1);
+}
+
+.card__heading {
+    padding: 10px;
+    background: lightgreen;
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-family: ubuntu;
+    color: gray;
+    font-size: 1.2rem;
+}
