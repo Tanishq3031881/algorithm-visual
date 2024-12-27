@@ -3,21 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Algorithm Visualizer</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Sort Algorithms</title>
+    <style>
+        /* Basic Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #990033;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Two equal columns */
+            gap: 10px; /* Space between columns */
+            align-items: start; /* Align both columns at the top */
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .card-img-top {
+            width: 330px; /* Adjust the image size */
+            height: auto;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: white;
+            padding: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .card ul li {
+            margin: 10px 0;
+        }
+
+        .card ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-    <div id="controls">
-        <button id="startBtn">Start Visualization</button>
-        <select id="algorithmSelect">
-            <option value="bubbleSort">Bubble Sort</option>
-            <option value="quickSort">Quick Sort</option>
-            <option value="mergeSort">Merge Sort</option>
-        </select>
+
+    <div class="heading">
+        <h1>Sort Algorithms</h1>
     </div>
-    <div id="visualization">
-        <!-- Visualization of the algorithm will go here -->
+
+    <!-- Container for two columns -->
+    <div class="container">
+        <!-- Left Column -->
+        <div class="card-body">
+            <!-- Bubble Sort -->
+            <div class="card">
+                <img class="card-img-top" src="IMAGES/Bubbble.png" alt="Bubble Sort Algorithm">
+                <ul>
+                    <li><a href="templates/bubble.html">Bubble Sort</a></li>
+                </ul>
+            </div>
+
+            <!-- Selection Sort -->
+            <div class="card">
+                <img class="card-img-top" src="IMAGES/selection.png" alt="Selection Sort Algorithm">
+                <ul>
+                    <li><a href="templates/selection.html">Selection Sort</a></li>
+                </ul>
+            </div>
+
+            <!-- Insertion Sort -->
+            <div class="card">
+                <img class="card-img-top" src="IMAGES/insertion.png" alt="Insertion Sort Algorithm">
+                <ul>
+                    <li><a href="templates/insertion.html">Insertion Sort</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="card-body">
+            <!-- Merge Sort -->
+            <div class="card">
+                <img class="card-img-top" src="IMAGES/Merge-Sort.png" alt="Merge Sort Algorithm">
+                <ul>
+                    <li><a href="templates/merge.html">Merge Sort</a></li>
+                </ul>
+            </div>
+
+            <!-- Quick Sort -->
+            <div class="card">
+                <img class="card-img-top" src="IMAGES/Quick-Sort.png" alt="Quick Sort Algorithm">
+                <ul>
+                    <li><a href="templates/quick.html">Quick Sort</a></li>
+                </ul>
+            </div>
+
+
+            <!-- Heap Sort -->
+            <div class="card">
+                <img class="card-img-top" src="IMAGES/Heap-Sort.png" alt="Heap Sort Algorithm">
+                <ul>
+                    <li><a href="templates/Heap.html">Heap Sort</a></li>
+                </ul>
+            </div>
     </div>
-    <script src="app.js"></script>
+
 </body>
 </html>

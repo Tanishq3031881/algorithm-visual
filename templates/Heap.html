@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Heap Sort</title>
+    <style>
+        html, * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            text-align: center;
+        }
+
+        .grid {
+            background: blue;
+            margin: auto;
+        }
+
+        p:nth-child(1) {
+            padding: 10px 20px;
+            text-align: center;
+            font-family: ubuntu;
+            font-weight: bolder;
+            font-size: 25px;
+            text-transform: uppercase;
+            color: gray;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 20px 30px;
+        }
+
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body>
+    <p>Heap Sort</p>
+    <canvas class="grid" width="1000" height="500"></canvas>
+    <div>
+        <button class="sort">SORT IT MUHAHAH</button>
+    </div>
+    <script>
+
+        // Main
+        let ctx = document.querySelector("canvas").getContext("2d");
+        let size = 30;
+        let arr = [];
+        let max = 50;
+        let time_delay = 200;
+
+        init();
+
+        // Utility
+
+        function initialize_array() {
+            let min = 10;
+            arr = [];  // Reset the array before initializing new values
+            for (let i = 0; i < size; i++) {
+                let p = Math.floor(Math.random() * (max - min) + min);
+                arr.push(p);
+            }
+        }
+
+        async function animation(color) {
+            ctx.fillStyle = "red";
+            ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+
+            let pw = ctx.canvas.width / size;
+            for (let i = 0; i < size; i++) {
+                ctx.beginPath();
+                ctx.fillStyle = "black";
+                if (i === color) {
+                    ctx.fillStyle = "red";  // Highlighting the element being worked on
+                }
+                ctx.fillRect(i * pw, ctx.canvas.height - (arr[i] * (ctx.canvas.height / max)), pw, arr[i] * (ctx.canvas.height / max));
+
+                ctx.strokeStyle = "blue";
+                ctx.strokeRect(i * pw, ctx.canvas.height - (arr[i] * (ctx.canvas.height / max)), pw, arr[i] * (ctx.canvas.height / max));
+
+                ctx.closePath();
+            }
+        }
+
+        function init() {
+            initialize_array();
+            animation(-1);  // Start with no highlight
+            add_listeners();
+        }
+
+        function add_listeners() {
+            document.querySelector("button").addEventListener("click", () => {
+                document.querySelector("button").disabled = true;
+                heapSort(arr);  // Corrected to call heapSort instead of sort
+            });
+        }
+
+        // Heap Sort Logic
+        async function heapify(arr, n, i) {
+            let largest = i;
+            let left = 2 * i + 1;
+            let right = 2 * i + 2;
+
+            if (left < n && arr[left] > arr[largest]) {
+                largest = left;
+            }
+
+            if (right < n && arr[right] > arr[largest]) {
+                largest = right;
+            }
+
+            if (largest !== i) {
+                [arr[i], arr[largest]] = [arr[largest], arr[i]];  // Swap
+                animation(i);  // Highlight the swapped element
+                await sleep(time_delay);
+                animation(largest);  // Highlight the other swapped element
+                await sleep(time_delay);
+                heapify(arr, n, largest);
+            }
+        }
+
+        async function heapSort(arr) {
+            let n = arr.length;
+
+            // Build a max heap
+            for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
+                await heapify(arr, n, i);
+            }
+
+            // Extract elements one by one
+            for (let i = n - 1; i > 0; i--) {
+                [arr[0], arr[i]] = [arr[i], arr[0]];  // Swap the root (max value) with the last element
+                animation(0);  // Highlight root
+                await sleep(time_delay);
+                animation(i);  // Highlight the element that was swapped to the last position
+                await sleep(time_delay);
+                heapify(arr, i, 0);  // Re-heapify the root element
+            }
+
+            animation(-1);  // Clear the highlight when sorting is complete
+        }
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+    </script>
+</body>
+</html>
